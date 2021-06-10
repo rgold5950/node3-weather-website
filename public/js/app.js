@@ -1,4 +1,4 @@
-console.log('Client side javascript file is loaded!')
+// console.log('Client side javascript file is loaded!')
 
 
 // to get the API output into client side javascript, we have to use the FETCH API
