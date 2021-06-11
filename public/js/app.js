@@ -18,9 +18,13 @@ const fetchData = (location) => {
         } else {
             messageOne.textContent = data.location
 
-            const {curr_temp, feels_like_temp, forecast } = data.forecast
+            const {curr_temp, feels_like_temp, forecast, other_facts } = data.forecast
+            // const {wind_speed, wind_dir, wind_degree, is_day} = other_facts
             messageTwo.textContent = `${forecast}. It is ${curr_temp} degrees Farenheit and feels like ${feels_like_temp}.`
+            const {wind_speed, wind_degree, wind_dir, is_day} = other_facts
+            messageThree.textContent = `Wind Speed: ${wind_speed}; Wind Degree: ${wind_degree}; Wind Direction: ${wind_dir}; Daytime?: ${is_day}`
             console.log(data.forecast)
+            console.log('hello')
         }
     })
 })
@@ -32,7 +36,7 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
-
+const messageThree = document.querySelector('#message-3')
 
 weatherForm.addEventListener('submit', (e) => {
     //this method prevents the browser from defaulting to a refresh when content is loaded so that you can actually see the results of your query
@@ -40,6 +44,7 @@ weatherForm.addEventListener('submit', (e) => {
     
     messageOne.textContent = ''
     messageTwo.textContent = ''
+    messageThree.textContent = ''
 
     const location = search.value
     fetchData(location)
